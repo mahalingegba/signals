@@ -1,0 +1,21 @@
+<li [ngClass]="{editing:isEditing,completed:todos.isCompleted}">
+    <div class="view">
+        <input 
+        class="toggle" 
+        type="checkbox" 
+        [checked]="todos.isCompleted"
+        (change)="toggleTodo()"
+        >
+        <label (dblclick)="setTodoInEditMode()">{{todos.text}}</label>
+        <button class="destroy" (click)="removeTodo(todos)"></button>
+    </div>
+    <ng-container *ngIf="isEditing">
+    <input
+    #textInput
+     class="edit" 
+     [value]="editingText"
+     (keyup)="changeText($event)"
+     (keyup.enter)="changeTodo()"
+     >
+    </ng-container>
+</li>

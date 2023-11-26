@@ -1,0 +1,23 @@
+<footer class="footer" [ngClass]="{hidden:todosService.noTodos()}">
+    <span class="todo-count">
+        <strong>{{ activeCount() }}</strong>
+        {{itemsLeftText()}}
+    </span>
+    <ul class="filters"> 
+<li>
+    <a href="/" 
+    [ngClass]="{selected :filter() === filterEnum.all}" 
+    (click)="filterChange($event,filterEnum.all)">All</a>
+</li>
+<li>
+    <a href="/" [ngClass]="{selected :filter() === filterEnum.active}"
+    (click)="filterChange($event,filterEnum.active)"
+    >Active</a>
+</li>
+<li>
+    <a href="/" [ngClass]="{selected :filter() === filterEnum.completed}"
+    (click)="filterChange($event,filterEnum.completed)"
+    >Completed</a>
+</li>
+    </ul>
+</footer>
